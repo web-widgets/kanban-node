@@ -1,0 +1,11 @@
+node_modules
+package-lock.json
+uploads
+!uploads/demo.jpg
+
+*.zip
+.Ds_store
+*.tgz
+*.log
+.vscode
+*.d.ts
