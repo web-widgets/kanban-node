@@ -1,4 +1,5 @@
 {
+	"id":"stages",
 	"key": "stage",
 	"options": [
 		{ "label": "Backlog", "id": "backlog" },

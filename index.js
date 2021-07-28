@@ -139,6 +139,23 @@ app.get("/stages", async (req, res) => {
 		res.send({ status: "err", error });
 	}
 });
+app.post("/stages", async (req, res) => {
+	try {
+		const stagesFind = await stages.find({});
+		const stagesConfig = stagesFind[0];
+
+		const { label, id } = req.body;
+		const serverId = `sid${id}`;
+		stagesConfig.options.push({ label, id: serverId });
+
+		await stages.update({ id: "stages" }, { $set: stagesConfig })
+
+		res.send({ status: "ok", id: serverId });
+	} catch (error) {
+		console.log("err", error)
+		res.send({ status: "err", error: JSON.stringify(error) });
+	}
+});
 app.put("/stages/:id", async (req, res) => {
 	try {
 		const id = req.params.id;
@@ -162,6 +179,23 @@ app.get("/swimlanes", async (req, res) => {
 	try {
 		const data = await swimlanes.find({});
 		res.send(data[0]);
+	} catch (error) {
+		res.send({ status: "err", error });
+	}
+});
+app.post("/swimlanes", async (req, res) => {
+	try {
+		const swimlanesFind = await swimlanes.find({});
+		const swimlanesConfig = await swimlanesFind[0];
+
+		const { label, id } = req.body;
+		const serverId = `sid${id}`;
+
+		swimlanesConfig.options.push({ label, id: serverId });
+
+		await swimlanes.update({ id: "swimlanes" }, { $set: swimlanesConfig })
+
+		res.send({ status: "ok", id: serverId });
 	} catch (error) {
 		res.send({ status: "err", error });
 	}

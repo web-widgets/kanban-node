@@ -1,4 +1,5 @@
 {
+	"id":"swimlanes",
 	"key": "team",
 	"options": [
 		{ "label": "Team 1", "id": "team1" },
