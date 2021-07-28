@@ -90,10 +90,18 @@ app.get("/cards", async (req, res) => {
 });
 app.post("/cards", async (req, res) => {
 	try {
+		const { overCardId } = req.body;
 		const card = getCardFields(req.body);
 
 		const data = await cards.insert(card);
-		order.push(data._id);
+
+		if (overCardId) {
+			const overCardIndex = order.findIndex((v) => v === overCardId);
+			order = order.filter(cardId => cardId !== id);
+			order.splice(overCardIndex, 0, card.id);
+		} else {
+			order.push(data._id);
+		}
 
 		res.send({ status: "ok", id: data._id });
 	} catch (error) {
@@ -103,14 +111,17 @@ app.post("/cards", async (req, res) => {
 app.put("/cards/:id", async (req, res) => {
 	try {
 		const id = req.params.id;
-		const { index, ...rest } = req.body;
+		const { overCardId, ...rest } = req.body;
+
 		const card = getCardFields(rest);
 
 		await cards.update({ _id: id }, { $set: { ...card } });
 
-		if (index >= 0) {
+		if (overCardId) {
+			const overCardIndex = order.findIndex(v => v === overCardId);
 			order = order.filter(cardId => cardId !== id);
-			order.splice(index, 0, card.id);
+
+			order.splice(overCardIndex, 0, card.id);
 		}
 		res.send({ status: "ok" });
 	} catch (error) {
