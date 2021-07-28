@@ -96,8 +96,9 @@ app.post("/cards", async (req, res) => {
 		const data = await cards.insert(card);
 
 		if (overCardId) {
-			const overCardIndex = order.findIndex((v) => v === overCardId);
 			order = order.filter(cardId => cardId !== id);
+			const overCardIndex = order.findIndex((v) => v === overCardId);
+
 			order.splice(overCardIndex, 0, card.id);
 		} else {
 			order.push(data._id);
@@ -111,18 +112,32 @@ app.post("/cards", async (req, res) => {
 app.put("/cards/:id", async (req, res) => {
 	try {
 		const id = req.params.id;
-		const { overCardId, ...rest } = req.body;
-
-		const card = getCardFields(rest);
+		const card = getCardFields(req.body);
 
 		await cards.update({ _id: id }, { $set: { ...card } });
 
+		res.send({ status: "ok" });
+	} catch (error) {
+		res.send({ status: "err", error });
+	}
+});
+app.put("/cards/:id/move", async (req, res) => {
+	try {
+		const id = req.params.id;
+		const { overCardId, ...rest } = req.body;
+
+		const card = getCardFields(rest);
+		await cards.update({ _id: id }, { $set: { ...card } });
+
+		order = order.filter(cardId => cardId !== id);
+
 		if (overCardId) {
 			const overCardIndex = order.findIndex(v => v === overCardId);
-			order = order.filter(cardId => cardId !== id);
-
 			order.splice(overCardIndex, 0, card.id);
+		} else {
+			order.push(id);
 		}
+
 		res.send({ status: "ok" });
 	} catch (error) {
 		res.send({ status: "err", error });
