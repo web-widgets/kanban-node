@@ -133,7 +133,7 @@ app.put("/cards/:id/move", async (req, res) => {
 
 		if (overCardId) {
 			const overCardIndex = order.findIndex(v => v === overCardId);
-			order.splice(overCardIndex, 0, card.id);
+			order.splice(overCardIndex, 0, id);
 		} else {
 			order.push(id);
 		}
