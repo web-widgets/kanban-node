@@ -44,7 +44,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const port = process.env.PORT || 3000;
-const host = process.env.HOST || "http://localhost";
+const serverUrl = process.env.APP_SERVER_URL || `http://localhost:${port}`;
 
 const cardFields = [
 	"label",
@@ -78,7 +78,7 @@ app.get("/cards", async (req, res) => {
 			cards[card._id] = { ...card, id: card._id };
 			// add demo image
 			if (card.image && card.image === "demo.jpg") {
-				cards[card._id].image = `${host}:${port}/uploads/${card.image}`;
+				cards[card._id].image = `${serverUrl}/uploads/${card.image}`;
 			}
 			return cards;
 		}, {});
@@ -249,7 +249,7 @@ app.put("/rows/:id", async (req, res) => {
 app.post("/uploads", upload.single("upload"), async (req, res) => {
 	try {
 		const { file } = req;
-		const fullPath = `${host}:${port}/${file.path}`;
+		const fullPath = `${serverUrl}/${file.path}`;
 
 		res.send({ status: "ok", path: fullPath, id: file.filename });
 	} catch (error) {
