@@ -201,7 +201,7 @@ app.put("/columns/:id", async (req, res) => {
 		res.send({ status: "err", error });
 	}
 });
-app.get("/swimlanes", async (req, res) => {
+app.get("/rows", async (req, res) => {
 	try {
 		const data = await swimlanes.find({});
 		res.send(data[0]);
@@ -209,7 +209,7 @@ app.get("/swimlanes", async (req, res) => {
 		res.send({ status: "err", error });
 	}
 });
-app.post("/swimlanes", async (req, res) => {
+app.post("/rows", async (req, res) => {
 	try {
 		const swimlanesFind = await swimlanes.find({});
 		const swimlanesConfig = await swimlanesFind[0];
@@ -226,7 +226,7 @@ app.post("/swimlanes", async (req, res) => {
 		res.send({ status: "err", error });
 	}
 });
-app.put("/swimlanes/:id", async (req, res) => {
+app.put("/rows/:id", async (req, res) => {
 	try {
 		const id = req.params.id;
 		const { label } = req.body;
