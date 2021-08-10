@@ -157,7 +157,7 @@ app.delete("/cards/:id", async (req, res) => {
 	}
 });
 
-app.get("/stages", async (req, res) => {
+app.get("/columns", async (req, res) => {
 	try {
 		const data = await stages.find({});
 		res.send(data[0]);
@@ -165,7 +165,7 @@ app.get("/stages", async (req, res) => {
 		res.send({ status: "err", error });
 	}
 });
-app.post("/stages", async (req, res) => {
+app.post("/columns", async (req, res) => {
 	try {
 		const stagesFind = await stages.find({});
 		const stagesConfig = stagesFind[0];
@@ -182,7 +182,7 @@ app.post("/stages", async (req, res) => {
 		res.send({ status: "err", error: JSON.stringify(error) });
 	}
 });
-app.put("/stages/:id", async (req, res) => {
+app.put("/columns/:id", async (req, res) => {
 	try {
 		const id = req.params.id;
 		const { label } = req.body;
