@@ -160,7 +160,7 @@ app.delete("/cards/:id", async (req, res) => {
 app.get("/columns", async (req, res) => {
 	try {
 		const data = await stages.find({});
-		res.send(data[0]);
+		res.send(data[0].options);
 	} catch (error) {
 		res.send({ status: "err", error });
 	}
@@ -204,7 +204,7 @@ app.put("/columns/:id", async (req, res) => {
 app.get("/rows", async (req, res) => {
 	try {
 		const data = await swimlanes.find({});
-		res.send(data[0]);
+		res.send(data[0].options);
 	} catch (error) {
 		res.send({ status: "err", error });
 	}
