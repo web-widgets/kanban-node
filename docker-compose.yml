@@ -6,4 +6,3 @@ services:
             - "3000:3000"
         environment:
             PORT: "3000"
-            APP_SERVER_URL: "http://master--kanban-node--dev.webix.io"
