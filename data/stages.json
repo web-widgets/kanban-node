@@ -1,9 +1,22 @@
 {
-	"id":"stages",
-	"key": "stage",
+	"id": "columns",
+	"key": "columns",
 	"options": [
-		{ "label": "Backlog", "id": "backlog" },
-		{ "label": "Todo", "id": "todo" },
-		{ "label": "In progress", "id": "inprogress" }
+		{
+			"label": "Backlog",
+			"id": "backlog"
+		},
+		{
+			"label": "In progress",
+			"id": "inprogress"
+		},
+		{
+			"label": "Testing",
+			"id": "testing"
+		},
+		{
+			"label": "Done",
+			"id": "done"
+		}
 	]
 }
