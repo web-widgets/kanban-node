@@ -1,10 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
 import { getRepository } from 'typeorm';
 
-import { Columns } from 'typeorm/entities/Column';
+import { Column } from 'typeorm/entities/Column';
 
 export const list = async (req: Request, res: Response, next: NextFunction) => {
-    const columnsRepository = getRepository(Columns);
+    const columnsRepository = getRepository(Column);
+
     try {
         const columns = await columnsRepository.find({
             select: ['id', 'label'],
@@ -15,7 +16,8 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
     }
 };
 export const add = async (req: Request, res: Response, next: NextFunction) => {
-    const columnsRepository = getRepository(Columns);
+    const columnsRepository = getRepository(Column);
+
     try {
         const column = req.body;
         await columnsRepository.save(column)
@@ -25,10 +27,11 @@ export const add = async (req: Request, res: Response, next: NextFunction) => {
     }
 };
 export const update = async (req: Request, res: Response, next: NextFunction) => {
-    const columnsRepository = getRepository(Columns);
-    const { id } = req.params;
-    const column = req.body;
+    const columnsRepository = getRepository(Column);
+
     try {
+        const { id } = req.params;
+        const column = req.body;
         await columnsRepository.update(id, column);
         res.send({ ok: true });
     } catch (err) {
@@ -36,9 +39,10 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
     }
 };
 export const remove = async (req: Request, res: Response, next: NextFunction) => {
-    const columnsRepository = getRepository(Columns);
-    const { id } = req.params;
+    const columnsRepository = getRepository(Column);
+
     try {
+        const { id } = req.params;
         await columnsRepository.delete(id);
         res.send({ ok: true });
     } catch (err) {

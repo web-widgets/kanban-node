@@ -8,4 +8,7 @@ export class Row {
     @Column()
     label: string;
 
+    @Column({ nullable: true })
+    collapsed?: boolean;
+
 }

@@ -6,6 +6,7 @@ import { getCardFields } from 'utils';
 
 export const list = async (req: Request, res: Response, next: NextFunction) => {
     const cardRepository = getRepository(Card);
+
     try {
         const cards = await cardRepository.find({
             select: ['id', 'label'],
@@ -18,6 +19,7 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
 
 export const add = async (req: Request, res: Response, next: NextFunction) => {
     const cardRepository = getRepository(Card);
+
     try {
         const { before } = req.body;
         const card: any = getCardFields(req.body);
@@ -36,6 +38,7 @@ export const add = async (req: Request, res: Response, next: NextFunction) => {
 
 export const update = async (req: Request, res: Response, next: NextFunction) => {
     const cardRepository = getRepository(Card);
+
     try {
         const { id } = req.params;
         const card: any = getCardFields(req.body);
@@ -47,6 +50,7 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
 }
 export const move = async (req: Request, res: Response, next: NextFunction) => {
     const cardRepository = getRepository(Card);
+
     try {
         const { id } = req.params;
         const { before, card } = req.body;
@@ -63,6 +67,7 @@ export const move = async (req: Request, res: Response, next: NextFunction) => {
 }
 export const remove = async (req: Request, res: Response, next: NextFunction) => {
     const cardRepository = getRepository(Card);
+
     try {
         const { id } = req.params;
         await cardRepository.delete(id);
