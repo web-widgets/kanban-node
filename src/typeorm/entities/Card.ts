@@ -1,4 +1,14 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+export interface IAttachment {
+  id: number;
+  url?: string;
+  previewURL?: string;
+  coverURL?: string;
+  file?: any;
+  name?: string;
+  status?: any;
+  isCover?: boolean;
+}
 
 @Entity('cards')
 export class Card {
@@ -40,5 +50,8 @@ export class Card {
 
   @Column({ nullable: true })
   sprint?: string;
+
+  @Column("jsonb", { nullable: true })
+  attached?: IAttachment[];
 
 }

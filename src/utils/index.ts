@@ -10,6 +10,7 @@ export const cardFields = [
     "sprint",
     "type",
     "column",
+    "attached",
     "id",
 ];
 export function getCardFields(card) {
