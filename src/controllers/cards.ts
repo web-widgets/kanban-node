@@ -2,14 +2,14 @@ import { Request, Response, NextFunction } from 'express';
 import { getRepository, LessThan } from 'typeorm';
 
 import { Card } from 'typeorm/entities/Card';
-import { getCardFields, STEP } from 'utils';
+import { cardFields, getCardFields, STEP } from 'utils';
 
 export const list = async (req: Request, res: Response, next: NextFunction) => {
     const cardRepository = getRepository(Card);
 
     try {
         const cards = await cardRepository.find({
-            select: ['id', 'label', 'column'],
+            select: cardFields as (keyof Card)[],
             order: {
                 index: "ASC",
             },

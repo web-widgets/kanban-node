@@ -16,8 +16,7 @@ export class seed1636144227878 implements MigrationInterface {
         // [todo] update fields
         const c = cards.map(card => {
             const obj = {
-                label: card.label,
-                column: card.column,
+                ...card,
                 index: current
             }
             current += STEP;

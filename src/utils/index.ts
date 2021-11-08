@@ -1,19 +1,16 @@
 export const cardFields = [
     "label",
-    "status",
     "description",
+    "status",
     "progress",
     "start_date",
     "end_date",
     "users",
-    "cover",
-    "image",
+    "color",
     "sprint",
-    "column",
-    "attachment",
     "type",
+    "column",
     "id",
-    "_id",
 ];
 export function getCardFields(card) {
     return Object.keys(card)
