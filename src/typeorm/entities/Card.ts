@@ -8,4 +8,9 @@ export class Card {
   @Column()
   label: string;
 
+  @Column()
+  column: number;
+
+  @Column({ nullable: true })
+  index: number;
 }

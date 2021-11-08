@@ -14,6 +14,7 @@
 		"prettier": "prettier --config .prettierrc --write './**/*.{ts,js,css,scss,json,md}'",
 		"test": "NODE_PATH=./src mocha --require ts-node/register 'test/integration/**/*.test.ts' --timeout 20000 --exit",
 		"commit": "git-cz",
+		"docker:db": "docker-compose up -d --build db && yarn sync && yarn seed:run",
 		"docker:dev": "docker-compose --file docker-compose.yml --file docker-compose.dev.yml --compatibility up --build",
 		"docker:stage": "docker-compose --file docker-compose.yml --file docker-compose.stage.yml --compatibility up --build",
 		"docker:prod": "docker-compose --file docker-compose.yml --file docker-compose.prod.yml --compatibility up --build",

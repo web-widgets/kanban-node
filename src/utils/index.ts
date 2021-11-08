@@ -23,3 +23,5 @@ export function getCardFields(card) {
             return acc;
         }, {});
 }
+
+export const STEP = 100_000_000;

@@ -15,7 +15,7 @@ export const cards = [
             4
         ],
         "sprint": "1.0",
-        "column": "backlog",
+        "column": 1,
         "type": "feature"
     },
     {
@@ -26,7 +26,7 @@ export const cards = [
         "start_date": "2021-01-04T23:00:00.000Z",
         "end_date": "2021-01-14T23:00:00.000Z",
         "sprint": "1.0",
-        "column": "backlog",
+        "column": 1,
         "type": "feature"
     },
     {
@@ -35,7 +35,7 @@ export const cards = [
         "cover": "#65D3B3",
         "start_date": "2021-01-04T23:00:00.000Z",
         "sprint": "1.2",
-        "column": "backlog",
+        "column": 1,
         "type": "task"
     },
     {
@@ -43,7 +43,7 @@ export const cards = [
         "status": 2,
         "cover": "#58C3FE",
         "sprint": "1.2",
-        "column": "inprogress",
+        "column": 2,
         "type": "feature"
     },
     {
@@ -51,7 +51,7 @@ export const cards = [
         "status": 2,
         "cover": "#58C3FE",
         "sprint": "1.2",
-        "column": "inprogress",
+        "column": 2,
         "type": "task"
     },
     {
@@ -59,7 +59,7 @@ export const cards = [
         "status": 1,
         "cover": "#58C3FE",
         "sprint": "1.0",
-        "column": "inprogress",
+        "column": 2,
         "type": "task"
     },
     {
@@ -67,7 +67,7 @@ export const cards = [
         "status": 3,
         "cover": "#58C3FE",
         "sprint": "1.3",
-        "column": "testing",
+        "column": 3,
         "type": "feature"
     },
     {
@@ -75,7 +75,7 @@ export const cards = [
         "status": 1,
         "cover": "#58C3FE",
         "sprint": "1.2",
-        "column": "testing",
+        "column": 3,
         "type": "task"
     },
     {
@@ -83,7 +83,7 @@ export const cards = [
         "status": 1,
         "cover": "#58C3FE",
         "sprint": "1.2",
-        "column": "testing",
+        "column": 3,
         "type": "feature"
     },
     {
@@ -91,7 +91,7 @@ export const cards = [
         "status": 2,
         "cover": "#58C3FE",
         "sprint": "1.0",
-        "column": "done",
+        "column": 4,
         "type": "feature"
     },
     {
@@ -99,7 +99,7 @@ export const cards = [
         "status": 2,
         "cover": "#58C3FE",
         "sprint": "1.0",
-        "column": "done",
+        "column": 4,
         "type": "task"
     },
 ]
