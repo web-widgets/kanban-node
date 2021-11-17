@@ -1,18 +1,14 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-import { dbCreateConnection } from "typeorm/dbConnection";
 import dotenv from 'dotenv';
-const express = require("express");
-const cors = require("cors");
-const path = require("path");
+import express from 'express';
+import cors from 'cors';
+import path from 'path';
 
+import { dbCreateConnection } from "./typeorm/dbConnection";
 import routes from './routes';
 
 dotenv.config({ path: path.join(__dirname, "../.env") });
 
 
-(async () => {
-    await dbCreateConnection();
-})();
 
 const app = express();
 app.use(cors());
@@ -22,6 +18,8 @@ app.use('/', routes);
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
-});
+dbCreateConnection().then(() => {
+    app.listen(port, () => {
+        console.log(`Example app listening at http://localhost:${port}`);
+    });
+})

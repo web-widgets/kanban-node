@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { list, add, update, move, remove } from 'controllers/cards';
+import { list, add, update, move, remove } from '../controllers/cards';
 
 const router = Router();
 

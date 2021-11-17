@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { getRepository } from 'typeorm';
 
-import { Column } from 'typeorm/entities/Column';
+import { Column } from '../typeorm/entities/Column';
 
 export const list = async (req: Request, res: Response, next: NextFunction) => {
     const columnsRepository = getRepository(Column);

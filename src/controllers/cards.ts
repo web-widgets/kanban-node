@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import { getRepository, LessThan } from 'typeorm';
 
-import { Card } from 'typeorm/entities/Card';
-import { cardFields, getCardFields, INDEX_STEP } from 'utils';
+import { Card } from '../typeorm/entities/Card';
+import { cardFields, getCardFields, INDEX_STEP } from '../utils';
 
 export const list = async (req: Request, res: Response, next: NextFunction) => {
     const cardRepository = getRepository(Card);

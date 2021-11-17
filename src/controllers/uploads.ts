@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import path from 'path';
 import { getRepository } from 'typeorm';
-import { Upload } from 'typeorm/entities/Upload';
+
+import { Upload } from '../typeorm/entities/Upload';
 
 export const list = async (req: Request, res: Response, next: NextFunction) => {
     try {

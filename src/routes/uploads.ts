@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { list, add } from 'controllers/uploads';
 import multer from 'multer';
 import path from 'path';
+import { list, add } from '../controllers/uploads';
 
 const router = Router();
 
