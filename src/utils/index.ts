@@ -13,7 +13,7 @@ export const cardFields = [
     "attached",
     "id",
 ];
-export function getCardFields(card) {
+export function getCardFields(card: Record<string, any>) {
     return Object.keys(card)
         .filter(key => cardFields.includes(key))
         .reduce((acc, key) => {
@@ -22,4 +22,4 @@ export function getCardFields(card) {
         }, {});
 }
 
-export const STEP = 100_000_000;
+export const INDEX_STEP = 100_000_000;

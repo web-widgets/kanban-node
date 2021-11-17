@@ -1,14 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-export interface IAttachment {
-  id: number;
-  url?: string;
-  previewURL?: string;
-  coverURL?: string;
-  file?: any;
-  name?: string;
-  status?: any;
-  isCover?: boolean;
-}
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import { Upload } from './Upload';
 
 @Entity('cards')
 export class Card {
@@ -46,12 +37,15 @@ export class Card {
   status?: number;
 
   @Column({ nullable: true })
-  type?: string;
+  type?: number;
 
   @Column({ nullable: true })
   sprint?: string;
 
-  @Column("jsonb", { nullable: true })
-  attached?: IAttachment[];
-
+  @OneToMany(() => Upload, upload => upload.card, { 
+    cascade: true,
+    eager: true,
+    nullable: true,
+  })
+  attached: Upload[];
 }

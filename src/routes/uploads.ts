@@ -25,7 +25,7 @@ const upload = multer({
 });
 
 
-router.get('/:id', list);
+router.get('/:file', list);
 router.post('/', upload.single("upload"), add);
 
 export default router;

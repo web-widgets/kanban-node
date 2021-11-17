@@ -3,7 +3,7 @@ import { getRepository } from 'typeorm';
 import { Card } from 'typeorm/entities/Card';
 import { Column } from "typeorm/entities/Column";
 import { Row } from "typeorm/entities/Row";
-import { STEP } from "utils";
+import { INDEX_STEP } from "utils";
 import { cards, columns, rows } from "./seedData";
 export class seed1636144227878 implements MigrationInterface {
 
@@ -12,14 +12,14 @@ export class seed1636144227878 implements MigrationInterface {
         const columnsRepository = getRepository(Column);
         const rowsRepository = getRepository(Row);
 
-        let current = STEP;
+        let current = INDEX_STEP;
         // [todo] update fields
         const c = cards.map(card => {
             const obj = {
                 ...card,
                 index: current
             }
-            current += STEP;
+            current += INDEX_STEP;
             return obj;
         }
         );

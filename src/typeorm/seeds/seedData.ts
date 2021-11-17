@@ -16,7 +16,7 @@ export const cards = [
         ],
         "sprint": "1.0",
         "column": 1,
-        "type": "feature"
+        "type": 1
     },
     {
         "id": 2,
@@ -27,7 +27,7 @@ export const cards = [
         "end_date": "2021-01-14T23:00:00.000Z",
         "sprint": "1.0",
         "column": 1,
-        "type": "feature"
+        "type": 1
     },
     {
         "label": "Searching and filtering",
@@ -36,7 +36,7 @@ export const cards = [
         "start_date": "2021-01-04T23:00:00.000Z",
         "sprint": "1.2",
         "column": 1,
-        "type": "task"
+        "type": 2
     },
     {
         "label": "Set the tasks priorities",
@@ -44,7 +44,7 @@ export const cards = [
         "color": "#58C3FE",
         "sprint": "1.2",
         "column": 2,
-        "type": "feature"
+        "type": 1
     },
     {
         "label": "Custom icons",
@@ -52,7 +52,7 @@ export const cards = [
         "color": "#58C3FE",
         "sprint": "1.2",
         "column": 2,
-        "type": "task"
+        "type": 2
     },
     {
         "label": "Integration with Gantt",
@@ -60,7 +60,7 @@ export const cards = [
         "color": "#58C3FE",
         "sprint": "1.0",
         "column": 2,
-        "type": "task"
+        "type": 2
     },
     {
         "label": "Drag and drop",
@@ -68,7 +68,7 @@ export const cards = [
         "color": "#58C3FE",
         "sprint": "1.3",
         "column": 3,
-        "type": "feature"
+        "type": 1
     },
     {
         "label": "Adding images",
@@ -76,7 +76,7 @@ export const cards = [
         "color": "#58C3FE",
         "sprint": "1.2",
         "column": 3,
-        "type": "task"
+        "type": 2
     },
     {
         "label": "Create cards from the UI and from api",
@@ -84,7 +84,7 @@ export const cards = [
         "color": "#58C3FE",
         "sprint": "1.2",
         "column": 3,
-        "type": "feature"
+        "type": 1
     },
     {
         "label": "Draw swimlanes",
@@ -92,7 +92,7 @@ export const cards = [
         "color": "#58C3FE",
         "sprint": "1.0",
         "column": 4,
-        "type": "feature"
+        "type": 1
     },
     {
         "label": "Progress bar",
@@ -100,7 +100,7 @@ export const cards = [
         "color": "#58C3FE",
         "sprint": "1.0",
         "column": 4,
-        "type": "task"
+        "type": 2
     },
 ]
 

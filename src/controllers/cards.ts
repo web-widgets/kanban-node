@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { getRepository, LessThan } from 'typeorm';
 
 import { Card } from 'typeorm/entities/Card';
-import { cardFields, getCardFields, STEP } from 'utils';
+import { cardFields, getCardFields, INDEX_STEP } from 'utils';
 
 export const list = async (req: Request, res: Response, next: NextFunction) => {
     const cardRepository = getRepository(Card);
@@ -26,10 +26,10 @@ async function normalizeIndexes() {
         order: { index: 'ASC' },
         select: ['id', 'index'],
     });
-    let current = STEP;
+    let current = INDEX_STEP;
     cards.map(card => {
         card.index = current;
-        current += STEP;
+        current += INDEX_STEP;
         return card;
     })
     return await cardRepository.save(cards);
@@ -56,7 +56,7 @@ async function getIndex(before: number) {
         const last = await cardRepository.findOne({
             order: { index: 'DESC' },
         });
-        index = last?.index ? last.index + STEP : STEP;
+        index = last?.index ? last.index + INDEX_STEP : INDEX_STEP;
     }
     if (index === 1) {
         await normalizeIndexes();
@@ -78,31 +78,32 @@ export const add = async (req: Request, res: Response, next: NextFunction) => {
         return next();
     }
 };
-
 export const update = async (req: Request, res: Response, next: NextFunction) => {
     const cardRepository = getRepository(Card);
-
     try {
         const { id } = req.params;
         const card: any = getCardFields(req.body);
-        await cardRepository.update(id, card);
+
+        await cardRepository.save({ ...card, id: Number(id) });
         res.send({ status: "ok" });
     } catch (err) {
+        res.send({ status: "error", error: err });
         return next();
     }
 }
 export const move = async (req: Request, res: Response, next: NextFunction) => {
     const cardRepository = getRepository(Card);
-
     try {
         const { id } = req.params;
         const { before, card } = req.body;
         const fields = getCardFields(card);
 
         const index = await getIndex(before);
-        await cardRepository.update(id, { ...fields, index });
+
+        await cardRepository.save({ id, ...fields, index });
         res.send({ status: "ok" });
     } catch (err) {
+        res.send({ status: "error", error: err });
         return next();
     }
 }
