@@ -11,19 +11,29 @@ export class seed1636144227878 implements MigrationInterface {
         const cardRepository = getRepository(Card);
         const columnsRepository = getRepository(Column);
         const rowsRepository = getRepository(Row);
+        const port = process.env.APP_SERVER_PORT || 3000;
+        const serverUrl = process.env.APP_SERVER_URL || `http://localhost:${port}`;
 
         let current = INDEX_STEP;
-        // [todo] update fields
-        const c = cards.map(card => {
+        const indexedCards = cards.map(card => {
+            if (card.attached) {
+                card.attached = card.attached.map(attached => {
+                    const fullPath = `${serverUrl}/uploads/${attached.url}`;
+                    return {
+                        ...attached,
+                        url: fullPath
+                    }
+                })
+            }
             const obj = {
                 ...card,
                 index: current
             }
             current += INDEX_STEP;
             return obj;
-        }
-        );
-        await cardRepository.save(c);
+        });
+
+        await cardRepository.save(indexedCards);
 
         await columnsRepository.save(columns);
         await rowsRepository.save(rows);

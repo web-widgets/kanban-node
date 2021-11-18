@@ -1,6 +1,5 @@
 export const cards = [
     {
-        "id": 1,
         "label": "Integration with React",
         "status": 1,
         "color": "#65D3B3",
@@ -16,10 +15,10 @@ export const cards = [
         ],
         "sprint": "1.0",
         "column": 1,
-        "type": 1
+        "type": 1,
+
     },
     {
-        "id": 2,
         "label": "Archive the cards/boards ",
         "status": 2,
         "color": "#FFC975",
@@ -44,7 +43,14 @@ export const cards = [
         "color": "#58C3FE",
         "sprint": "1.2",
         "column": 2,
-        "type": 1
+        "type": 1,
+        "attached": [
+            {
+                name: "demo.jpg",
+                url: "demo.jpg",
+                isCover: true,
+            }
+        ]
     },
     {
         "label": "Custom icons",
@@ -76,7 +82,14 @@ export const cards = [
         "color": "#58C3FE",
         "sprint": "1.2",
         "column": 3,
-        "type": 2
+        "type": 2,
+        "attached": [
+            {
+                name: "demo2.jpg",
+                url: "demo2.jpg",
+                isCover: true,
+            }
+        ]
     },
     {
         "label": "Create cards from the UI and from api",
