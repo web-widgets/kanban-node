@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/', routes);
 
-const port = process.env.PORT || 3000;
+const port = process.env.APP_SERVER_PORT || 3000;
 
 dbCreateConnection().then(() => {
     app.listen(port, () => {

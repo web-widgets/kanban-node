@@ -15,7 +15,7 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 export const add = async (req: Request, res: Response, next: NextFunction) => {
-    const port = process.env.PORT || 3000;
+    const port = process.env.APP_SERVER_PORT || 3000;
     const serverUrl = process.env.APP_SERVER_URL || `http://localhost:${port}`;
     const uploadsRepository = getRepository(Upload);
     try {

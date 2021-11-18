@@ -11,9 +11,9 @@
 		"docker:dev": "docker-compose --file docker-compose.yml --file docker-compose.dev.yml --compatibility up --build",
 		"docker:prod": "docker-compose --file docker-compose.yml --file docker-compose.yml --compatibility up --build",
 		"migration:run": "ts-node ./node_modules/.bin/typeorm migration:run --config ./src/typeorm/config/ormconfig.ts",
-		"migration:revert": "PG_HOST=localhost ts-node ./node_modules/.bin/typeorm migration:revert --config ./src/typeorm/config/ormconfig.ts",
-		"migration:generate": "PG_HOST=localhost ts-node ./node_modules/.bin/typeorm migration:generate --pretty --config ./src/typeorm/config/ormconfig.ts -n ",
-		"migration:create": "PG_HOST=localhost NODE_PATH=./src ts-node ./node_modules/.bin/typeorm migration:create --config ./src/typeorm/config/ormconfig.ts -n "
+		"migration:revert": "APP_DB_PATH=localhost ts-node ./node_modules/.bin/typeorm migration:revert --config ./src/typeorm/config/ormconfig.ts",
+		"migration:generate": "APP_DB_PATH=localhost ts-node ./node_modules/.bin/typeorm migration:generate --pretty --config ./src/typeorm/config/ormconfig.ts -n ",
+		"migration:create": "APP_DB_PATH=localhost NODE_PATH=./src ts-node ./node_modules/.bin/typeorm migration:create --config ./src/typeorm/config/ormconfig.ts -n "
 	},
 	"dependencies": {
 		"cors": "^2.8.5",
