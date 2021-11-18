@@ -20,8 +20,3 @@ services:
             - "5432:5432"
         networks:
             - backend
-    adminer:
-        image: adminer
-        restart: always
-        ports:
-            - 5001:8080
