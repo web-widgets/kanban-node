@@ -16,7 +16,7 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
         });
         res.send(cards);
     } catch (err) {
-        return next();
+        return next(err);
     }
 };
 async function normalizeIndexes() {
@@ -87,8 +87,7 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
         await cardRepository.save({ ...card, id: Number(id) });
         res.send({ status: "ok" });
     } catch (err) {
-        res.send({ status: "error", error: err });
-        return next();
+        return next(err);
     }
 }
 export const move = async (req: Request, res: Response, next: NextFunction) => {
@@ -103,8 +102,7 @@ export const move = async (req: Request, res: Response, next: NextFunction) => {
         await cardRepository.save({ id, ...fields, index });
         res.send({ status: "ok" });
     } catch (err) {
-        res.send({ status: "error", error: err });
-        return next();
+        return next(err);
     }
 }
 export const remove = async (req: Request, res: Response, next: NextFunction) => {
@@ -115,6 +113,6 @@ export const remove = async (req: Request, res: Response, next: NextFunction) =>
         await cardRepository.delete(id);
         res.send({ status: "ok" });
     } catch (err) {
-        return next();
+        return next(err);
     }
 }

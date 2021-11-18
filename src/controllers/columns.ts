@@ -12,7 +12,7 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
         });
         res.send(columns);
     } catch (err) {
-        return next();
+        return next(err);
     }
 };
 export const add = async (req: Request, res: Response, next: NextFunction) => {
@@ -23,7 +23,7 @@ export const add = async (req: Request, res: Response, next: NextFunction) => {
         await columnsRepository.save(column)
         res.send({ ok: true });
     } catch (err) {
-        return next();
+        return next(err);
     }
 };
 export const update = async (req: Request, res: Response, next: NextFunction) => {
@@ -35,7 +35,7 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
         await columnsRepository.update(id, column);
         res.send({ ok: true });
     } catch (err) {
-        return next();
+        return next(err);
     }
 };
 export const remove = async (req: Request, res: Response, next: NextFunction) => {
@@ -46,6 +46,6 @@ export const remove = async (req: Request, res: Response, next: NextFunction) =>
         await columnsRepository.delete(id);
         res.send({ ok: true });
     } catch (err) {
-        return next();
+        return next(err);
     }
 }

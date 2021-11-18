@@ -9,8 +9,8 @@ export const list = async (req: Request, res: Response, next: NextFunction) => {
         const filename = req.params.file;
         const filePath = path.join(process.cwd(), process.env.APP_BINARYDATA || "uploads", filename);
         res.sendFile(filePath);
-    } catch (error) {
-        res.send({ status: "err", error });
+    } catch (err) {
+        return next(err);
     }
 };
 
@@ -24,7 +24,7 @@ export const add = async (req: Request, res: Response, next: NextFunction) => {
         const up = await uploadsRepository.save({ url: fullPath, name: file.filename })
         res.send(up);
 
-    } catch (error) {
-        res.send({ status: "err", error });
+    } catch (err) {
+        return next(err);
     }
 };
